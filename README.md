@@ -36,6 +36,7 @@ Certifique-se de ter o **Docker** e o **Git** instalados em sua máquina.
      ```env
      FRONTEND_URL=http://localhost:3000
      ```
+
 ### 3.3. Execução com Docker
 1. Na raiz do projeto, suba os containers:
    ```bash
@@ -91,3 +92,9 @@ A coleção foi estruturada para que o avaliador possa reproduzir cada teste de 
 * **Autenticação Rápida (Pasta `Logins`):** Em determinados casos de teste de API, será solicitado realizar o login como administrador (`Admin`) ou como membro comum (`Trainee`/`Member`). Na pasta `Logins`, você faz isso automaticamente apenas selecionando o perfil correspondente e enviando a requisição (**Send**).
 * **Um Caso de Teste por Pasta (`CT-XX`):** Dentro das pastas de cada módulo (`Autenticação JWT`, `Check-in`, `Pontos`), cada Caso de Teste de API é representado por uma pasta própria com o seu código (ex: `CT-06`, `CT-18`, `CT-22`).
 * **Execução Guiada:** Algumas pastas de CT possuem apenas uma requisição pré-configurada, enquanto outras contam com várias requisições numeradas (`Passo 1`, `Passo 2`, `Passo 3`). O próprio card do Caso de Teste (ou Bug Report) no GitHub detalha exatamente quais passos e requisições da pasta devem ser executados para validar o cenário.
+
+### 5.1. Upload de Arquivos e a pasta `/assets`
+O formato de exportação JSON do Insomnia salva a estrutura da requisição, mas não embute arquivos físicos. Por isso, ao executar os testes de **Check-in**, o campo `photo` no *Multipart Form* não conterá o arquivo original.
+
+* Para rodar esses testes, você pode anexar **qualquer imagem** do seu próprio computador.
+* **Para facilitar (Opcional):** Disponibilizamos imagens de exemplo na pasta `/assets` deste repositório. O uso é totalmente opcional, servindo apenas como uma conveniência para agilizar a execução dos testes de upload e validação de formato.
