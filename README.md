@@ -29,7 +29,7 @@ Onde encontrar cada item exigido pelo desafio:
 |---|---|
 | README (descrição, ferramentas e tipos de teste) | Este arquivo |
 | Coleção de API (Insomnia) | `<CAMINHO_DO_ARQUIVO.json>` (ver [seção 9](#9-como-utilizar-a-coleção-do-insomnia-testes-de-api)) |
-| Casos de Teste (32 CTs + 3 de regressão) | [Issues](../../issues) com o label `Tipo: CT`, ou a view **CTs** do GitHub Projects |
+| Casos de Teste (31 CTs + 3 de regressão) | [Issues](../../issues) com o label `Tipo: CT`, ou a view **CTs** do GitHub Projects |
 | Bug Reports (12 bugs, mínimo de 2 por área) | [Issues](../../issues) com o label `Tipo: Bug`, ou a view **Bugs** do GitHub Projects |
 | Casos Ad-hoc (bugs extras) | Issues com o label `Ad-hoc` (CT-23, CT-25 e CT-28) |
 | Teste de regressão simulado | [Seção 8](#8-teste-de-regressão-simulado): CT-33, CT-34 e CT-35 |
@@ -46,7 +46,7 @@ A auditoria avalia a experiência do usuário, o cumprimento das regras de negó
 
 1. **Autenticação JWT:** registro, verificação de conta por e-mail, login, validade de sessão e controle de acesso baseado em cargos (RBAC: Admin, Member e Trainee).
 2. **Check-in por Foto:** upload de comprovantes de presença, validação de formato/tamanho de mídia, restrição temporal (1 check-in a cada 24h), moderação por Administrador e isolamento de dados entre usuários.
-3. **Sistema de Pontos:** cálculo automático de pontuação na aprovação ou exclusão de check-ins, persistência no banco de dados e reflexo no ranking da temporada ativa, restrição temporal.
+3. **Sistema de Pontos:** cálculo automático de pontuação na aprovação ou exclusão de check-ins, restrição de 24h entre check-ins (que impede pontuação duplicada), persistência no banco de dados e reflexo no ranking da temporada ativa.
 
 ---
 
@@ -69,7 +69,7 @@ A auditoria avalia a experiência do usuário, o cumprimento das regras de negó
 | Tipo | Foco | Quantidade |
 |---|---|---|
 | **Funcional** | Comportamento na interface (front-end) comparado ao esperado | 13 CTs |
-| **API** | Endpoints, status codes e regras de negócio do backend (Insomnia) | 19 CTs |
+| **API** | Endpoints, status codes e regras de negócio do backend (Insomnia) | 18 CTs |
 | **Ad-hoc** | Cenários descobertos durante a exploração, registrados para manter a rastreabilidade (já contados acima) | 3 CTs |
 | **Regressão (simulada)** | Garantia de que a correção de um bug não gera efeitos colaterais | 3 CTs (um por área) |
 
@@ -77,7 +77,7 @@ Os casos incluem cenários **positivos** (o sistema aceita o que deve aceitar) e
 
 ### 4.2. Ciclo de vida seguido
 
-1. **Planejar:** os Casos de Teste foram escritos antes de abrir o sistema, com resultado esperado e requisito associado (RF/RNF).
+1. **Planejar:** os Casos de Teste foram escritos com base no documento de requisitos, cada um com resultado esperado e requisito associado (RF/RNF).
 2. **Executar:** interface no navegador, endpoints no Insomnia e logs no terminal do Docker para identificar falhas invisíveis na tela.
 3. **Documentar:** cada falha gerou imediatamente um Bug Report com passos, resultado obtido, resultado esperado e evidência.
 4. **Reportar:** os resultados foram consolidados no Relatório de Testes Final.
@@ -94,7 +94,7 @@ Erros encontrados fora do planejamento inicial foram registrados como **Caso de 
 
 | Planejados | Executados | Passou | Falhou | Impedido |
 |---|---|---|---|---|
-| 35 (32 + 3 de regressão) | `__` | `__` | `__` | `__` |
+| 34 (31 + 3 de regressão) | `__` | `__` | `__` | `__` |
 
 > Os testes **impedidos** não são contados como falha. Eles não puderam ser executados por causa de um bug anterior.
 > Os 3 casos de regressão são uma **simulação** documentada (ver [seção 8](#8-teste-de-regressão-simulado)).
@@ -117,20 +117,24 @@ Erros encontrados fora do planejamento inicial foram registrados como **Caso de 
 | Check-in por Foto | 7 | BUG-04 a BUG-10 |
 | Sistema de Pontos | 2 | BUG-11, BUG-12 |
 
-### 5.4. Bugs mais críticos (para a demonstração)
-
-* **BUG-02 e BUG-03 (Crítico):** o e-mail de verificação não gera token e o estado `PENDING` não existe na tabela `User`. Isso afeta todo o fluxo de cadastro e ativação de conta.
-* **BUG-09 e BUG-07 (Maior):** falhas de isolamento de dados. Um usuário acessa check-ins de terceiros por ID (API) e pela tela inicial (interface).
-* **BUG-06 e BUG-08 (Maior):** check-ins são criados como aprovados e ignoram o status `PENDING`, o que quebra a moderação e a regra de pontuação.
-
 ---
 
 ## 6. Como executar o projeto
 
-### 6.1. Preparação
+### 6.1. Obtenção do projeto (obrigatório)
+
+O código do sistema **NaSalinha não está neste repositório**, que contém apenas a documentação da auditoria. Para executar os testes, é necessário **clonar o repositório oficial do desafio**:
+
+```bash
+git clone https://github.com/Gustavohmmagalhaes/nasalinha-qa-challenge.git
+```
+
+> O tutorial abaixo é apenas **complementar** às instruções desse repositório, que continuam sendo a referência principal para subir o ambiente.
+
+### 6.2. Preparação
 Certifique-se de ter o **Docker** e o **Git** instalados em sua máquina.
 
-### 6.2. Configuração de variáveis
+### 6.3. Configuração de variáveis
 1. Vá até a pasta `/backend` e copie o arquivo `.env.example` para um novo arquivo `.env`:
    ```bash
    cp backend/.env.example backend/.env
@@ -143,7 +147,7 @@ Certifique-se de ter o **Docker** e o **Git** instalados em sua máquina.
      FRONTEND_URL=http://localhost:3000
      ```
 
-### 6.3. Execução com Docker
+### 6.4. Execução com Docker
 1. Na raiz do projeto, suba os containers:
    ```bash
    sudo docker compose up --build
@@ -153,7 +157,12 @@ Certifique-se de ter o **Docker** e o **Git** instalados em sua máquina.
    sudo docker compose exec backend npx prisma migrate dev --name init
    sudo docker compose exec backend npx prisma db seed
    ```
-3. Acesse os serviços:
+3. Para inspecionar o banco de dados (útil nos testes de persistência, como o hash de senha, o status da conta e o saldo de pontos), abra o Prisma Studio:
+   ```bash
+   sudo docker compose exec backend npx prisma studio
+   ```
+   Por padrão, ele abre em `http://localhost:5555`.
+4. Acesse os serviços:
    * **Frontend:** `http://localhost:3000`
    * **API (backend):** `http://localhost:5001`
 
@@ -201,16 +210,15 @@ A informação de **etapa** (onde o item está) fica no **Status do Project**. O
 | **Tipo de teste** | `Funcional`, `API`, `Regressão`, `Ad-hoc` |
 | **Natureza do cenário** | `Positivo`, `Negativo` |
 | **Severidade do bug** | `Bug: Crítico`, `Bug: Maior`, `Bug: Médio`, `Bug: Menor` |
-| **Simulação** | `Simulação` (bugs usados na regressão simulada) |
 
 ### 7.4. Critérios de severidade
 
 | Severidade | Critério |
 |---|---|
-| **Crítico** | Trava o sistema ou impede um fluxo principal por completo (ex.: nenhuma conta nova consegue ser verificada) |
-| **Maior** | Quebra direta de regra de negócio ou erro de lógica central (ex.: falha de isolamento de dados, restrição de 24h ignorada) |
-| **Médio** | Comportamento anômalo parcial ou resposta fora do padrão, sem comprometer a integridade dos dados (ex.: validação incompleta, perfil com acesso indevido a uma rota de leitura) |
-| **Menor** | Falha visual ou de usabilidade, sem impacto funcional (ex.: status code incorreto sem efeito sobre a regra de negócio) |
+| **Crítico** | Trava o sistema, impede um fluxo principal por completo (ex.: nenhuma conta nova consegue ser verificada), causa perda de dados ou representa uma **falha grave de segurança** (ex.: quebra de isolamento/IDOR) |
+| **Maior** | Quebra direta de regra de negócio ou erro de lógica central (ex.: restrição de 24h ignorada, check-in criado como aprovado) |
+| **Médio** | Comportamento anômalo parcial ou resposta HTTP fora do padrão (ex.: status code incorreto), sem comprometer o banco de dados |
+| **Menor** | Falha visual de interface ou erro de usabilidade, sem impacto funcional |
 
 > O desafio prevê três níveis (Crítico, Maior e Menor). A categoria **Médio** foi adicionada para separar defeitos de impacto intermediário, e é apresentada separadamente no relatório.
 
@@ -238,7 +246,7 @@ Um teste que estava **impedido** pelo bug não entra como regressão, porque nun
 
 ### 8.2. Reflexo no GitHub Projects
 
-* Os bugs da simulação ficam em **Aguardando reteste** (a correção "foi entregue", mas o QA ainda não verificou) e recebem o label `Simulação`, com um comentário indicando o CT de regressão associado.
+* Os bugs da simulação ficam em **Aguardando reteste** (a correção "foi entregue", mas o QA ainda não verificou), com um comentário na issue indicando o CT de regressão associado e que não houve alteração real de código.
 * Nenhum bug é movido para **Corrigido**, pois não houve correção real.
 * Os CTs citados mantêm o status real (por exemplo, os impedidos continuam em **Impedido**).
 
@@ -310,7 +318,6 @@ Correspondência entre o **ID do documento** e o **número da issue** no GitHub.
 | CT-14 | #21 | Check-in | API | Isolamento na listagem de check-ins próprios (RF-06) |
 | CT-15 | #22 | Pontos | API | Dupla aprovação ou soma indevida em check-in pendente/rejeitado (RF-07) |
 | CT-16 | #23 | Pontos | Funcional | Subtração indevida de saldo ao excluir check-in PENDING (RF-08) |
-| CT-17 | #24 | Pontos | API | Ordenação do ranking por `totalPoints DESC` e desempate por `checkInsCount` (RF-09) |
 | CT-18 | #25 | Pontos | API | Burla da janela de 24h entre check-ins na virada do dia (RF-09) |
 | CT-19 | #26 | JWT | Funcional | Registro, envio de código e ativação (RF-01) |
 | CT-20 | #27 | JWT | API | Acesso de ADMINISTRADOR a endpoint de moderação (RF-03) |
@@ -346,5 +353,3 @@ Correspondência entre o **ID do documento** e o **número da issue** no GitHub.
 | BUG-10 | #43 | Check-in | Menor | Retorna 500 ao enviar formato de arquivo inválido |
 | BUG-11 | #44 | Pontos | Maior | Falha na restrição de intervalo de 24h para múltiplos check-ins (RF-09) |
 | BUG-12 | #47 | Pontos | Médio | Quebra de RBAC: perfil TRAINEE acessa a rota de ranking via API (RF-09) |
-
-> **Bugs com a mesma causa raiz, vistos em camadas diferentes:** BUG-02 e BUG-03 (fluxo de verificação de conta), BUG-06 e BUG-08 (status inicial do check-in), BUG-05 e BUG-11 (regra das 24h), BUG-07 e BUG-09 (isolamento de dados).
