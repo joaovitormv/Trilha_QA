@@ -104,8 +104,8 @@ Erros encontrados fora do planejamento inicial foram registrados como **Caso de 
 | Severidade | Quantidade | Bugs |
 |---|---|---|
 | Crítico | 2 | BUG-02, BUG-03 |
-| Maior | 7 | BUG-04, BUG-05, BUG-06, BUG-07, BUG-08, BUG-09, BUG-11 |
-| Médio | 2 | BUG-01, BUG-12 |
+| Maior | 6 | BUG-05, BUG-06, BUG-07, BUG-08, BUG-09, BUG-11 |
+| Médio | 3 | BUG-01, BUG-4, BUG-12 |
 | Menor | 1 | BUG-10 |
 | **Total** | **12** | |
 
@@ -344,7 +344,7 @@ Correspondência entre o **ID do documento** e o **número da issue** no GitHub.
 | BUG-01 | #31 | JWT | Médio | Falta de validação de limite mínimo (nome/senha) no cadastro e erro genérico na interface |
 | BUG-02 | #32 | JWT | Crítico | E-mail de verificação não gera token JWT |
 | BUG-03 | #33 | JWT | Crítico | Ausência do estado PENDING na tabela `User` (relacionado ao BUG-02) |
-| BUG-04 | #35 | Check-in | Maior | Sistema permite envio de foto repetida (RF-04) |
+| BUG-04 | #35 | Check-in | Médio | Sistema permite envio de foto repetida (RF-04) |
 | BUG-05 | #36 | Check-in | Maior | Permite múltiplos check-ins consecutivos em menos de 24h (RF-04) |
 | BUG-06 | #37 | Check-in | Maior | Novos check-ins criados como aprovados automaticamente (RF-05) |
 | BUG-07 | #38 | Check-in | Maior | Exposição de check-ins de terceiros na tela inicial para perfis restritos (RF-06) |
