@@ -49,7 +49,6 @@ Certifique-se de ter o **Docker** e o **Git** instalados em sua máquina.
    ```
 3. Acesse os serviços:
    * **Frontend:** `http://localhost:3000`
-   * **Backend (API):** `http://localhost:5001/api`
 
 ## 4. Padrões do GitHub Projects e Issues
 
@@ -95,7 +94,7 @@ A coleção foi estruturada para que o avaliador possa reproduzir cada teste de 
 
 ### 5.1. Configuração da Variável de Ambiente (`base_url`)
 Ao exportar a coleção, o Insomnia preserva as requisições, mas **não salva o valor das variáveis de ambiente**. Antes de iniciar os testes, configure a URL base:
-1. No canto superior esquerdo do Insomnia, clique no gerenciador de ambientes (geralmente escrito "Base Environment") e vá em **Manage Environments**.
+1. No canto superior direito do Insomnia, clique no gerenciador de ambientes (geralmente escrito "Base Environment"), crie e adicione o ambiente.
 2. Certifique-se de que o JSON do ambiente contenha a variável:
    ```json
    {
