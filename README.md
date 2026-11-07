@@ -46,7 +46,7 @@ A auditoria avalia a experiência do usuário, o cumprimento das regras de negó
 
 1. **Autenticação JWT:** registro, verificação de conta por e-mail, login, validade de sessão e controle de acesso baseado em cargos (RBAC: Admin, Member e Trainee).
 2. **Check-in por Foto:** upload de comprovantes de presença, validação de formato/tamanho de mídia, restrição temporal (1 check-in a cada 24h), moderação por Administrador e isolamento de dados entre usuários.
-3. **Sistema de Pontos:** cálculo automático de pontuação na aprovação ou exclusão de check-ins, persistência no banco de dados e reflexo no ranking da temporada ativa.
+3. **Sistema de Pontos:** cálculo automático de pontuação na aprovação ou exclusão de check-ins, persistência no banco de dados e reflexo no ranking da temporada ativa, restrição temporal.
 
 ---
 
