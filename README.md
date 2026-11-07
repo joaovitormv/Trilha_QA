@@ -24,7 +24,7 @@ A auditoria avalia a experiência do usuário, o cumprimento das regras de negó
 ### 3.1. Preparação
 Certifique-se de ter o **Docker** e o **Git** instalados em sua máquina.
 
-### 3.2. Configuração de Variáveis (O Primeiro Desafio)
+### 3.2. Configuração de Variáveis
 1. Vá até a pasta `/backend` e copie o arquivo `.env.example` para um novo arquivo `.env`:
    ```bash
    cp backend/.env.example backend/.env
