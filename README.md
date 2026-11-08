@@ -28,12 +28,12 @@ Onde encontrar cada item exigido pelo desafio:
 | Requisito do desafio | Onde está |
 |---|---|
 | README (descrição, ferramentas e tipos de teste) | Este arquivo |
-| Coleção de API (Insomnia) | `<CAMINHO_DO_ARQUIVO.json>` (ver [seção 9](#9-como-utilizar-a-coleção-do-insomnia-testes-de-api)) |
+| Coleção de API (Insomnia) | Pasta [`Insomnia/`](Insomnia): `NaSalinha.json` e `NaSalinha.yaml` (coleção) e `My-Enviroment.yaml` (ambiente). Ver [seção 9](#9-como-utilizar-a-coleção-do-insomnia-testes-de-api) |
 | Casos de Teste (31 CTs + 3 de regressão) | [Issues](../../issues) com o label `Tipo: CT`, ou a view **CTs** do GitHub Projects |
 | Bug Reports (12 bugs, mínimo de 2 por área) | [Issues](../../issues) com o label `Tipo: Bug`, ou a view **Bugs** do GitHub Projects |
 | Casos Ad-hoc (bugs extras) | Issues com o label `Ad-hoc` (CT-23, CT-25 e CT-28) |
 | Teste de regressão simulado | [Seção 8](#8-teste-de-regressão-simulado): CT-33, CT-34 e CT-35 |
-| Relatório de Testes Final | `<LINK_DO_RELATORIO>` |
+| Relatório de Testes Final | [`relatorios/Relatorio_de_Testes_Final.md`](relatorios/Relatorio_de_Testes_Final.md) |
 | Vídeo de demonstração (máx. 10 min) | `<LINK_DO_VIDEO>` |
 
 **Convenção importante:** os Casos de Teste e os bugs são identificados por **ID próprio** (`CT-XX` e `BUG-XX`), que aparece no título de cada issue. Esse ID **não é o número da issue no GitHub** (por exemplo, `BUG-12` é a issue `#47`). A [seção 10](#10-índice-de-rastreabilidade) traz a tabela de correspondência completa.
@@ -105,7 +105,7 @@ Erros encontrados fora do planejamento inicial foram registrados como **Caso de 
 |---|---|---|
 | Crítico | 2 | BUG-02, BUG-03 |
 | Maior | 6 | BUG-05, BUG-06, BUG-07, BUG-08, BUG-09, BUG-11 |
-| Médio | 3 | BUG-01, BUG-4, BUG-12 |
+| Médio | 3 | BUG-01, BUG-04, BUG-12 |
 | Menor | 1 | BUG-10 |
 | **Total** | **12** | |
 
@@ -254,7 +254,13 @@ Um teste que estava **impedido** pelo bug não entra como regressão, porque nun
 
 ## 9. Como utilizar a coleção do Insomnia (testes de API)
 
-O arquivo JSON exportado do Insomnia está em: `<CAMINHO_DO_ARQUIVO.json>`.
+Os arquivos exportados do Insomnia estão na pasta [`Insomnia/`](Insomnia) do repositório (veja também o [README da pasta](Insomnia/README.md)):
+
+| Arquivo | Conteúdo |
+|---|---|
+| `Insomnia/NaSalinha.yaml` | Coleção com as requisições dos testes de API (formato nativo do Insomnia v5) |
+| `Insomnia/NaSalinha.json` | Mesma coleção em JSON, conforme exigido pelo desafio |
+| `Insomnia/My-Enviroment.yaml` | Ambiente com a variável `base_url` |
 
 A coleção foi estruturada para que o avaliador reproduza cada teste de API sem montar requisições manualmente:
 
@@ -262,21 +268,27 @@ A coleção foi estruturada para que o avaliador reproduza cada teste de API sem
 * **Um Caso de Teste por pasta (`CT-XX`):** dentro das pastas de cada módulo (`Autenticação JWT`, `Check-in`, `Pontos`), cada CT de API tem uma pasta com o seu código (ex.: `CT-06`, `CT-18`, `CT-22`).
 * **Execução guiada:** algumas pastas têm uma única requisição pré-configurada, enquanto outras têm várias requisições numeradas (`Passo 1`, `Passo 2`, `Passo 3`). A issue do CT no GitHub detalha quais passos executar.
 
-### 9.1. Configuração da variável de ambiente (`base_url`)
+> O desafio pede a coleção em JSON, mas o Insomnia v5 só exporta em YAML ou HAR. O YAML é o arquivo exportado pelo Insomnia, e o JSON é uma conversão direta dele, com a mesma estrutura.
 
-A exportação do Insomnia preserva as requisições, mas **não salva o valor das variáveis de ambiente**. Antes de iniciar os testes, configure a URL base:
+### 9.1. Importação da coleção e do ambiente
 
-1. No canto superior direito do Insomnia, clique no gerenciador de ambientes (geralmente "Base Environment") e crie o ambiente.
-2. Certifique-se de que o JSON do ambiente contenha a variável:
-   ```json
-   {
-     "base_url": "http://localhost:5001"
-   }
-   ```
+1. Abra o Insomnia e use a opção **Import** para importar a partir de um arquivo (*From File*).
+2. Importe **os dois arquivos** da pasta `Insomnia/`: `NaSalinha.yaml` e `My-Enviroment.yaml`.
+3. Confirme que o ambiente importado está selecionado no gerenciador de ambientes (canto superior direito do Insomnia) antes de enviar as requisições.
+
+> **Nota: se o ambiente não funcionar.** Se as requisições falharem por URL inválida ou a variável `base_url` aparecer vazia (alguns formatos de exportação do Insomnia não preservam os valores das variáveis de ambiente), configure manualmente:
+> 1. No canto superior direito do Insomnia, clique no gerenciador de ambientes (geralmente "Base Environment") e crie ou edite o ambiente.
+> 2. Certifique-se de que o JSON do ambiente contenha a variável:
+>    ```json
+>    {
+>      "base_url": "http://localhost:5001"
+>    }
+>    ```
+> 3. Salve e selecione o ambiente antes de enviar as requisições.
 
 ### 9.2. Upload de arquivos e a pasta `/assets`
 
-O formato JSON do Insomnia salva a estrutura da requisição, mas não embute arquivos físicos. Por isso, nos testes de **Check-in**, o campo `photo` do *Multipart Form* não contém o arquivo original.
+A exportação do Insomnia salva a estrutura da requisição, mas não embute arquivos físicos. Por isso, nos testes de **Check-in**, o campo `photo` do *Multipart Form* não contém o arquivo original.
 
 Imagens de exemplo estão na pasta `/assets` deste repositório. Para anexá-las no Insomnia:
 
