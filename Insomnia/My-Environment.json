@@ -1,0 +1,23 @@
+{
+  "type": "environment.insomnia.rest/5.0",
+  "schema_version": "5.1",
+  "name": "My Environment",
+  "meta": {
+    "id": "wrk_57052dc4ab3848adafe0b260fb376421",
+    "created": 1794017237358,
+    "modified": 1794017237358,
+    "description": ""
+  },
+  "environments": {
+    "name": "Base Environment",
+    "meta": {
+      "id": "env_afead1d8c87ac4a1f91554213ec05e07cc48f7ca",
+      "created": 1794017237363,
+      "modified": 1794017268879,
+      "isPrivate": false
+    },
+    "data": {
+      "base_url": "http://localhost:5001"
+    }
+  }
+}

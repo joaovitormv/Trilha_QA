@@ -1,0 +1,1178 @@
+{
+  "type": "collection.insomnia.rest/5.0",
+  "schema_version": "5.1",
+  "name": "NaSalinha",
+  "meta": {
+    "id": "wrk_80b57a7ec5ec4f1ea774b0b43c46dc49",
+    "created": 1793985638281,
+    "modified": 1793985638281,
+    "description": ""
+  },
+  "collection": [
+    {
+      "name": "Autenticação JWT",
+      "meta": {
+        "id": "fld_5c142efbdd69401591e867c58807b18c",
+        "created": 1793546460604,
+        "modified": 1793585901354,
+        "sortKey": -1793570270856.75,
+        "description": ""
+      },
+      "children": [
+        {
+          "name": "CT-02",
+          "meta": {
+            "id": "fld_a85c7d546f2b47ea8cb7f508fb899e63",
+            "created": 1793578104917,
+            "modified": 1793578104917,
+            "sortKey": -1793578104917,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/seasons",
+              "name": "CT-02 Acesso a rota de Admin como trainee/membro",
+              "meta": {
+                "id": "req_04903ecf4ec244b0802ba103964767e3",
+                "created": 1793557495735,
+                "modified": 1793578340718,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793578340611
+              },
+              "method": "POST",
+              "body": {
+                "mimeType": "application/json",
+                "text": "{\n  \"name\": \"Temporada Hack\",\n  \"startDate\": \"2026-11-01T00:00:00Z\",\n  \"endDate\": \"2026-12-31T23:59:59Z\"\n}"
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}",
+                "prefix": ""
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "CT-08",
+          "meta": {
+            "id": "fld_5bf752bbe44e4eaeb12bc4de6bebfec4",
+            "created": 1793578125928,
+            "modified": 1793578125928,
+            "sortKey": -1793578125928,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/auth/register",
+              "name": "Passo 1 - Registro com email duplicado",
+              "meta": {
+                "id": "req_c76dbd1457964896bb394878997667c8",
+                "created": 1793547220030,
+                "modified": 1793582364316,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793582272766
+              },
+              "method": "POST",
+              "body": {
+                "mimeType": "application/json",
+                "text": "{\n  \"name\": \"Usuário \",\n  \"email\": \"teste.conflito@qa.com\",\n  \"password\": \"SenhaSegura123!\"\n}"
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            },
+            {
+              "url": "{{base_url}}/api/auth/register",
+              "name": "Passo 2 - Registro com email duplicado",
+              "meta": {
+                "id": "req_5ce47a85d2da46a991adc43d14507e91",
+                "created": 1793582379142,
+                "modified": 1793582393633,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793580306688.5
+              },
+              "method": "POST",
+              "body": {
+                "mimeType": "application/json",
+                "text": "{\n  \"name\": \"User \",\n  \"email\": \"teste.conflito@qa.com\",\n  \"password\": \"SenhaSegura123!\"\n}"
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "CT-20",
+          "meta": {
+            "id": "fld_edcc02c9b0384fa888d796734d0fc8ee",
+            "created": 1793578140865,
+            "modified": 1793578140864,
+            "sortKey": -1793578140865,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/seasons",
+              "name": "CT 20 - Acesso a rota restrita como Admin",
+              "meta": {
+                "id": "req_c69436dd4dd5479da57dc96e29657786",
+                "created": 1793560211767,
+                "modified": 1793582263517,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793578335188
+              },
+              "method": "POST",
+              "body": {
+                "mimeType": "application/json",
+                "text": "{\n  \"name\": \"Temporada Hack\",\n  \"startDate\": \"2026-11-01T00:00:00Z\",\n  \"endDate\": \"2026-12-31T23:59:59Z\"\n}"
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1df47a196de74c888d11a6752b53149d', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}"
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "CT-29",
+          "meta": {
+            "id": "fld_dd7e3b5c14f64fbfae64c0609046e8ae",
+            "created": 1793982981213,
+            "modified": 1793982981213,
+            "sortKey": -1793982981213,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/auth/register",
+              "name": "Passo 1 ",
+              "meta": {
+                "id": "req_f80ce4d7777e4d3b89cc20fab0bfdca8",
+                "created": 1793983003079,
+                "modified": 1793983062936,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793983005252
+              },
+              "method": "POST",
+              "body": {
+                "mimeType": "application/json",
+                "text": "{\n  \"name\": \"Usuário\",\n  \"email\": \"teste@qa.com\",\n  \"password\": \"Senha123\"\n}"
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "CT-30",
+          "meta": {
+            "id": "fld_6e06d101846544fa9769c525ab46c28c",
+            "created": 1793983346137,
+            "modified": 1793983346137,
+            "sortKey": -1793983346137,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/users/me",
+              "name": "Passo 1",
+              "meta": {
+                "id": "req_1a8da6a6bd994e00b86306307a5d97db",
+                "created": 1793983360398,
+                "modified": 1793984126547,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793983363117
+              },
+              "method": "GET",
+              "body": {
+                "mimeType": "application/json",
+                "text": "{\n  \"email\": \"pedro@example.com\", \n  \"password\": \"senha123\"\n}"
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}"
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Check-in",
+      "meta": {
+        "id": "fld_3b3019ab0c5d4ff1b0ace6c753cb1ae5",
+        "created": 1793546471200,
+        "modified": 1793585899323,
+        "sortKey": -1793562340116.5,
+        "description": ""
+      },
+      "children": [
+        {
+          "name": "CT-25",
+          "meta": {
+            "id": "fld_abf112a862b844dbb799f55dd584a8d9",
+            "created": 1793582468748,
+            "modified": 1793582468748,
+            "sortKey": -1793582468748,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/checkins/c7367025-d08b-4a81-be9b-da2b8168142c",
+              "name": "CT-25 - Acesso a check-in de outro user",
+              "meta": {
+                "id": "req_810de7b5efb94e0298717584ced4bd99",
+                "created": 1793565600637,
+                "modified": 1793583722918,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793582470536
+              },
+              "method": "GET",
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}"
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "CT-14",
+          "meta": {
+            "id": "fld_de256cb75a0e420d82367cc0e415eb2d",
+            "created": 1793582479154,
+            "modified": 1793582479154,
+            "sortKey": -1793582479154,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/checkins/my-checkins",
+              "name": "CT-14 Acessar Check-ins próprios",
+              "meta": {
+                "id": "req_8ffee273176e4edc8be8d6e2b14f8b3a",
+                "created": 1793563756350,
+                "modified": 1793582503022,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793582502904
+              },
+              "method": "GET",
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}"
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "CT-04",
+          "meta": {
+            "id": "fld_9b46dfcce9804708befbad84a14283e6",
+            "created": 1793582487964,
+            "modified": 1793582487964,
+            "sortKey": -1793582487964,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/checkins",
+              "name": "CT-04 Validação do status PENDING",
+              "meta": {
+                "id": "req_095d007bfc934827ad64dc173bbfcc39",
+                "created": 1793561754817,
+                "modified": 1793582504886,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793582504827
+              },
+              "method": "POST",
+              "body": {
+                "mimeType": "multipart/form-data",
+                "params": [
+                  {
+                    "name": "photo",
+                    "value": "",
+                    "description": "",
+                    "disabled": false,
+                    "fileName": "/home/joaovitormv/Downloads/G5X6RRPLCFJ2REGZV7YS5VI7H4 1.png",
+                    "type": "file"
+                  }
+                ]
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "multipart/form-data"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}"
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "CT-11",
+          "meta": {
+            "id": "fld_3252035841aa4b79bcdbcdbecf2e6209",
+            "created": 1793582496514,
+            "modified": 1793582496514,
+            "sortKey": -1793582496514,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/checkins",
+              "name": "CT-11 Formato de arquivo inválido",
+              "meta": {
+                "id": "req_e59e50cdceac4a408dd38c3fa2f64a7b",
+                "created": 1793561365251,
+                "modified": 1793987722221,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793582507232
+              },
+              "method": "POST",
+              "body": {
+                "mimeType": "multipart/form-data",
+                "params": [
+                  {
+                    "name": "photo",
+                    "value": "",
+                    "description": "",
+                    "disabled": false,
+                    "fileName": "/home/joaovitormv/Downloads/casos_de_teste.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "multipart/form-data"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}",
+                "prefix": ""
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "CT-31",
+          "meta": {
+            "id": "fld_a5bb600096f94d4c9efc5083585d4a94",
+            "created": 1793984398306,
+            "modified": 1793984398306,
+            "sortKey": -1793984398306,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/checkins",
+              "name": "Passo 1",
+              "meta": {
+                "id": "req_8357e81ebc214d029d71c59344de7da1",
+                "created": 1793984416383,
+                "modified": 1793984533343,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793984418105
+              },
+              "method": "POST",
+              "body": {
+                "mimeType": "multipart/form-data",
+                "params": [
+                  {
+                    "name": "photo",
+                    "value": "",
+                    "description": "",
+                    "disabled": false,
+                    "fileName": "/home/joaovitormv/Downloads/Gemini_Generated_Image_g49yz1g49yz1g49y.jpeg",
+                    "type": "file"
+                  }
+                ]
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "multipart/form-data"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}",
+                "prefix": ""
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "CT-32",
+          "meta": {
+            "id": "fld_2fef22d2a0bf4b7d90c63bd170884ee5",
+            "created": 1793985214687,
+            "modified": 1793985214687,
+            "sortKey": -1793985214687,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/checkins",
+              "name": "Passo 1",
+              "meta": {
+                "id": "req_68df30b4fe9a4665a8356ae79ff226db",
+                "created": 1793985223433,
+                "modified": 1793985236317,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793985225170
+              },
+              "method": "POST",
+              "body": {
+                "mimeType": "multipart/form-data",
+                "params": [
+                  {
+                    "name": "photo",
+                    "value": "",
+                    "description": "",
+                    "disabled": false,
+                    "fileName": "/home/joaovitormv/Downloads/Relatório Bolsista Inovação João Vitor Maximiano.docx",
+                    "type": "file"
+                  }
+                ]
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "multipart/form-data"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}",
+                "prefix": ""
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pontos",
+      "meta": {
+        "id": "fld_411c54cceea74a67a1068bc734618849",
+        "created": 1793546478636,
+        "modified": 1793546478636,
+        "sortKey": -1793546478636,
+        "description": ""
+      },
+      "children": [
+        {
+          "name": "CT-22",
+          "meta": {
+            "id": "fld_24121e9ceaa74e4384c772d37f306e6a",
+            "created": 1793583772341,
+            "modified": 1793583772341,
+            "sortKey": -1793583772341,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/points/",
+              "name": "Passo 3:  Soma de pontos",
+              "meta": {
+                "id": "req_34ab79702e2e44fda8526be552e2ff46",
+                "created": 1793573887301,
+                "modified": 1793583943554,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793583774140
+              },
+              "method": "GET",
+              "body": {
+                "mimeType": "multipart/form-data"
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "multipart/form-data"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}",
+                "prefix": ""
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            },
+            {
+              "url": "{{base_url}}/api/checkins",
+              "name": "Passo 2: Check-in",
+              "meta": {
+                "id": "req_a21c5285cca348059e1d8778284fcd06",
+                "created": 1793583883359,
+                "modified": 1793583930202,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793583774240
+              },
+              "method": "POST",
+              "body": {
+                "mimeType": "multipart/form-data",
+                "params": [
+                  {
+                    "name": "photo",
+                    "value": "",
+                    "description": "",
+                    "disabled": false,
+                    "fileName": "/home/joaovitormv/Downloads/G5X6RRPLCFJ2REGZV7YS5VI7H4 1.png",
+                    "type": "file"
+                  }
+                ]
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "multipart/form-data"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}"
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            },
+            {
+              "url": "{{base_url}}/api/points/",
+              "name": "Passo 1: Soma de pontos",
+              "meta": {
+                "id": "req_47deedd86de5410a85b188874ad793b5",
+                "created": 1793584415522,
+                "modified": 1793584415522,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793583774265
+              },
+              "method": "GET",
+              "body": {
+                "mimeType": "multipart/form-data"
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "multipart/form-data"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}",
+                "prefix": ""
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "CT-06",
+          "meta": {
+            "id": "fld_fe67d9d993474fab83cd30291b041242",
+            "created": 1793584361534,
+            "modified": 1793584361534,
+            "sortKey": -1793584361534,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/checkins/1af2c27c-189e-4877-9b1b-373dafd9b700",
+              "name": "Passo 2",
+              "meta": {
+                "id": "req_e6fc2eb50a48471fb62f556c13a5c6cd",
+                "created": 1793574146642,
+                "modified": 1793584781448,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793584364486
+              },
+              "method": "DELETE",
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1df47a196de74c888d11a6752b53149d', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}"
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            },
+            {
+              "url": "{{base_url}}/api/points/",
+              "name": "Passo 3: Verificar subtração",
+              "meta": {
+                "id": "req_04091525afc341efa93c0cb7e44ab785",
+                "created": 1793584814744,
+                "modified": 1793584819838,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793584364386
+              },
+              "method": "GET",
+              "body": {
+                "mimeType": "multipart/form-data"
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "multipart/form-data"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}",
+                "prefix": ""
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            },
+            {
+              "url": "{{base_url}}/api/points/",
+              "name": "Passo 1",
+              "meta": {
+                "id": "req_f0c0fa5825374686b02a88ae1387b9f9",
+                "created": 1793917698495,
+                "modified": 1793917698495,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793584377279.5
+              },
+              "method": "GET",
+              "body": {
+                "mimeType": "multipart/form-data"
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "multipart/form-data"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}",
+                "prefix": ""
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "CT-18",
+          "meta": {
+            "id": "fld_ec78179d13a64ebb859ed827c68a1519",
+            "created": 1793585065845,
+            "modified": 1793585065845,
+            "sortKey": -1793585065845,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/checkins",
+              "name": "Check-in ",
+              "meta": {
+                "id": "req_a304151b1f7f48dd9de2ae4285c9583b",
+                "created": 1793585140214,
+                "modified": 1793585146096,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793585146006
+              },
+              "method": "POST",
+              "body": {
+                "mimeType": "multipart/form-data",
+                "params": [
+                  {
+                    "name": "photo",
+                    "value": "",
+                    "description": "",
+                    "disabled": false,
+                    "fileName": "/home/joaovitormv/Downloads/G5X6RRPLCFJ2REGZV7YS5VI7H4 1.png",
+                    "type": "file"
+                  }
+                ]
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "multipart/form-data"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}"
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "CT-27",
+          "meta": {
+            "id": "fld_8eab2d8c3cb14859868afe0feb5cedf2",
+            "created": 1793917537578,
+            "modified": 1793917537578,
+            "sortKey": -1793917537579,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/points/",
+              "name": "Passo 1",
+              "meta": {
+                "id": "req_55b6dbcd8e4c4b22afddbd64c33dc205",
+                "created": 1793583897093,
+                "modified": 1793919062124,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793917701001
+              },
+              "method": "GET",
+              "body": {
+                "mimeType": "multipart/form-data"
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "multipart/form-data"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}",
+                "prefix": ""
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            },
+            {
+              "url": "{{base_url}}/api/checkins",
+              "name": "Passo 2",
+              "meta": {
+                "id": "req_ea637cdf935c4d6299352a04efed3f78",
+                "created": 1793917765344,
+                "modified": 1793919177548,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793917700901
+              },
+              "method": "POST",
+              "body": {
+                "mimeType": "multipart/form-data",
+                "params": [
+                  {
+                    "name": "photo",
+                    "value": "",
+                    "description": "",
+                    "disabled": false,
+                    "fileName": "/home/joaovitormv/Downloads/Requisitos.pdf",
+                    "type": "file"
+                  },
+                  {
+                    "name": "status",
+                    "value": "\"PENDING\"",
+                    "description": "",
+                    "disabled": false
+                  }
+                ]
+              },
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "multipart/form-data"
+                }
+              ],
+              "authentication": {
+                "type": "bearer",
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}"
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "CT-28",
+          "meta": {
+            "id": "fld_0e69012e00fa40d48989b08280ff204b",
+            "created": 1793920288110,
+            "modified": 1793920288110,
+            "sortKey": -1793920288110,
+            "description": ""
+          },
+          "children": [
+            {
+              "url": "{{base_url}}/api/rankings",
+              "name": "New Request",
+              "meta": {
+                "id": "req_3fa46b02587d402eae4ee9ff64cd48ab",
+                "created": 1793919052718,
+                "modified": 1794017732119,
+                "isPrivate": false,
+                "description": "",
+                "sortKey": -1793920289987
+              },
+              "method": "GET",
+              "authentication": {
+                "type": "bearer",
+                "disabled": false,
+                "token": "{% response 'body', 'req_1bd94d8e54e44cc2a0a697d02d7b87bb', 'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}"
+              },
+              "settings": {
+                "renderRequestBody": true,
+                "encodeUrl": true,
+                "followRedirects": "global",
+                "cookies": {
+                  "send": true,
+                  "store": true
+                },
+                "rebuildPath": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logins",
+      "meta": {
+        "id": "fld_01d07f76270840d0a1fde82153549bfb",
+        "created": 1793578201597,
+        "modified": 1793582142856,
+        "sortKey": -1793578201597,
+        "description": ""
+      },
+      "children": [
+        {
+          "url": "{{base_url}}/api/auth/login",
+          "name": " Login Trainee",
+          "meta": {
+            "id": "req_1bd94d8e54e44cc2a0a697d02d7b87bb",
+            "created": 1793557291724,
+            "modified": 1793578256031,
+            "isPrivate": false,
+            "description": "",
+            "sortKey": -1793578223653
+          },
+          "method": "POST",
+          "body": {
+            "mimeType": "application/json",
+            "text": "{\n  \"email\": \"pedro@example.com\", \n  \"password\": \"senha123\"\n}"
+          },
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "authentication": {
+            "type": "none"
+          },
+          "settings": {
+            "renderRequestBody": true,
+            "encodeUrl": true,
+            "followRedirects": "global",
+            "cookies": {
+              "send": true,
+              "store": true
+            },
+            "rebuildPath": true
+          }
+        },
+        {
+          "url": "{{base_url}}/api/auth/login",
+          "name": " Login Admin",
+          "meta": {
+            "id": "req_1df47a196de74c888d11a6752b53149d",
+            "created": 1793578267926,
+            "modified": 1793578317332,
+            "isPrivate": false,
+            "description": "",
+            "sortKey": -1793576505112
+          },
+          "method": "POST",
+          "body": {
+            "mimeType": "application/json",
+            "text": "{\n  \"email\": \"admin@nasalinha.com\", \n  \"password\": \"senha123\"\n}"
+          },
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "authentication": {
+            "type": "none"
+          },
+          "settings": {
+            "renderRequestBody": true,
+            "encodeUrl": true,
+            "followRedirects": "global",
+            "cookies": {
+              "send": true,
+              "store": true
+            },
+            "rebuildPath": true
+          }
+        }
+      ]
+    }
+  ],
+  "cookieJar": {
+    "name": "Default Jar",
+    "meta": {
+      "id": "jar_01bcc0c35879427ba4af52b68f4e9a4f",
+      "created": 1793546421176,
+      "modified": 1793546421176
+    }
+  },
+  "environments": {
+    "name": "Base Environment",
+    "meta": {
+      "id": "env_303ae287d4fe48ffa27bb9797c288d05",
+      "created": 1793546421173,
+      "modified": 1793546421173,
+      "isPrivate": false
+    }
+  }
+}
